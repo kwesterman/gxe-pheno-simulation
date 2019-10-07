@@ -39,13 +39,13 @@ phenos <- seqApply(genofile, c(sample.id="sample.id", genotype="genotype"), FUN=
 num_ids <- length(samp.ids)
 pheno_df <- tibble(  # Assemble final phenotype table
   id=samp.ids,
-  smk_sim=E_vec,
   bp_sim=phenos,
+  smk_sim=E_vec,
   sex=sample(c(1, 2), size=num_ids, replace=T),
   age=runif(num_ids, 20, 65) +  # Induce small correlation with age covariate
     rnorm(num_ids, phenos / sd(phenos), 5)
 )
-write_tsv(pheno_df, "data/processed/smk_bp_sim_phenos.tsv")
+write_csv(pheno_df, "data/processed/smk_bp_sim_phenos.csv")
 
 closefn.gds(genofile)
 
@@ -57,4 +57,4 @@ ped_df <- tibble(
   MO=0,
   SEX=pheno_df$sex
 )
-write_tsv(ped_df, "data/processed/sim_unrelated_pedigree.tsv")
+write_csv(ped_df, "data/processed/sim_unrelated_pedigree.csv")
