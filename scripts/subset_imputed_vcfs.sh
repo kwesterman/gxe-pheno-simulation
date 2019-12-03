@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-# Subset each chromosome to MAF > 0.05
-for chr in {1..22} X Y; do
-	bcftools view -q 0.05 -O z -o chr${chr}.maf05.vcf.gz ALL.chr${chr}.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz;
+# Subset each chromosome to MAF > 0.01
+for chr in {1..22} X; do
+	bcftools view -q 0.01 -O z -o ../data/processed/imputed/chr${chr}.dose.vcf.gz ../data/processed/imputed/chr${chr}_maf01.dose.vcf.gz
 done

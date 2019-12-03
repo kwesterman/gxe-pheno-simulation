@@ -3,8 +3,8 @@ library(SNPRelate)
 library(tidyverse)
 
 # Genotypes
-vcf_filename <- "../data/processed/sequenced/all.maf05.sung2018subset.vcf.gz"
-gds_filename <- "../data/processed/sequenced/all.maf05.sung2018subset.gds"
+vcf_filename <- "../data/processed/sequenced/all.sung2018subset.vcf.gz"
+gds_filename <- "../data/processed/sequenced/all.sung2018subset.gds"
 seqVCF2GDS(vcf_filename, gds_filename)
 seqOptimize(gds_filename, target="by.sample")
 genofile <- seqOpen(gds_filename)
